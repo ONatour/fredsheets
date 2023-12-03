@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>  
+  <script>  
+  function changePage(page) {
+    document.open();
+    document.write(page);
+    document.close();
+  }
+  </script>
+  <body>
+    It worked!
+    <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index')">First Page</button>
+  </body>
+</html>

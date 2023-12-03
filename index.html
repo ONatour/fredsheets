@@ -1,16 +1,55 @@
-!DOCTYPE html>
+<!DOCTYPE html>
+<script>
+
+  //reads value from text_box and passes it to search function
+  function passSearch(){
+    let search = document.getElementById("text_field").value;
+    google.script.run.repeatSearch(search);
+  }
+
+  function changePage(page) {
+    document.open();
+    document.write(page);
+    document.close();
+  }
+
+ 
+</script>
+
+
+
 <html>
   <head>
     <base target="_top">
-    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <!-- <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css"> -->
+
+    <style>
+      body{
+        background-color:yellow;
+        width:100%;
+        margin:0;
+      }
+
+      #text_field{
+        
+        text-align:center;
+        width:75%;
+        display:grid;
+        margin:auto; 
+      }
+
+    </style>
+
   </head>
   <body>
-    <p> Poggie woggies </p>
+    <p> Enter search query </p>
     <div id = "main">
       <div class="inline form-group">
-        <label for="Search">Search</label>
-        <input type="text" id="Search" style="width: 250px;">
-        <button class="action" onclick="google.script.run.menuItem1()">Translate</button>
+        <label for="Search" style ="text-align: center">Search</label>
+        <input id="text_field" type="text" id="Search">
+        <button class="action" onclick="passSearch()">Enterrrrr</button>
+        <button class="action" onclick="google.script.run.showSecond()">switch page</button>    <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Next Page</button>
+
       </div>
     </div> 
   </body>

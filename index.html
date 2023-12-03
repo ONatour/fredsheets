@@ -16,8 +16,6 @@
  
 </script>
 
-
-
 <html>
   <head>
     <base target="_top">
@@ -25,9 +23,10 @@
 
     <style>
       body{
-        background-color:yellow;
+        outline: green solid 1px;
         width:100%;
         margin:0;
+        
       }
 
       #text_field{
@@ -47,8 +46,8 @@
       <div class="inline form-group">
         <label for="Search" style ="text-align: center">Search</label>
         <input id="text_field" type="text" id="Search">
-        <button class="action" onclick="passSearch()">Enterrrrr</button>
-        <button class="action" onclick="google.script.run.showSecond()">switch page</button>    <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Next Page</button>
+        <button class="action" onclick="passSearch()">Enter</button>
+        <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Next Page</button>
 
       </div>
     </div> 

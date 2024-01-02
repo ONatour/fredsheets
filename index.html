@@ -23,32 +23,143 @@
 
     <style>
       body{
-        outline: pink solid 3px;
-        width:100%;
+        
+        width:300px;
         margin:0;
+        padding:0;
+        overflow:hidden;
+        
+       
       }
 
-      #text_field{
+      
+      #container{
+        width:100%;
+        height:100vh;
         
-        text-align:center;
-        width:75%;
-        display:grid;
-        margin:auto; 
+        
+        
+    
       }
+
+      #imgbox{
+        
+
+        img{
+          margin:35px 50px 15px 50px;
+          width:200px; 
+          height:64px;
+
+        }
+
+      }
+
+  
+      #main{
+        
+        margin: 5px;
+      }
+
+
+      
+
+      .grid-container{
+        display:grid;
+        background-color: aquamarine;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 10px;
+        justify-items: center;
+        
+        
+        
+    
+      
+
+      }
+
+      .item-3{
+        background-color:  rgba(255, 255, 255, 0.8);
+        border:1px solid red;
+        padding:1px;
+        font-size: 12px;
+        text-align: center;
+        grid-row-start: 3;
+        
+
+      }
+
+      .item-s{
+        grid-area: 1 / 1 / 1 / 3;
+        align-self:center;
+        background-color: cornflowerblue;
+       
+        
+        
+        
+      }
+      
+      #Search{
+       
+        
+        
+        
+        
+        
+      }
+
+     
+
+      .item-e{
+        
+        grid-area: 2 / 1 / 2 / 1;
+        align-self: center;
+        background-color: darkviolet;
+        margin:auto;
+
+      }
+
+      #enter{
+        
+        
+        
+      }
+
+      .item-n{
+        grid-area: 2 / 2 / 2 / 2;
+        align-self: center;
+        background-color: darkgreen;
+        margin:auto;
+        
+
+
+      }
+
+      #next{
+       
+        
+      }
+
+
+
 
     </style>
 
   </head>
   <body>
-    <p> Enter search query </p>
-    <div id = "main">
-      <div class="inline form-group">
-        <label for="Search" style ="text-align: center">Search</label>
-        <input id="text_field" type="text" id="Search">
-        <button class="action" onclick="passSearch()">Enter</button>
-        <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Next Page</button>
-
+    <div id = "container">
+      <div id = "imgbox"> <img src="https://fred.stlouisfed.org/images/fred-logo-2x.png" class='center'> </div>
+      
+      <div id = "main">
+        <div class="grid-container">
+          <div class = 'item-s'><input id="Search" type="text"  placeholder = "Search FRED data..."></div>
+          <div class = 'item-e'><button id ='enter' class="action" onclick="passSearch()">Enter</button></div>
+          <div class = 'item-n'><button id ='next' onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Next Page</button></div>
+          <div class='item-3'>1</div>
+          <div class='item-3'>2</div>
+         
+        </div>
       </div>
-    </div> 
+    </div>
   </body>
 </html>

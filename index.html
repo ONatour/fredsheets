@@ -7,11 +7,7 @@
     google.script.run.repeatSearch(search);
   }
 
-
-
-  //listens for enter key in search bar
-  
-
+  //changes to another page.
   function changePage(page) {
     document.open();
     document.write(page);
@@ -35,12 +31,6 @@
         overflow:hidden;
         
       }
-
-      
-      #container{
-        
-      }
-
       #imgbox{
         img{
           margin:35px 50px 15px 50px;
@@ -80,6 +70,7 @@
         box-sizing: border-box;
         width:100%;
         padding: 5px 3px 5px 3px;
+        
       }
 
       .item-e{
@@ -98,15 +89,13 @@
 
   </head>
   <body>
-    <div id = "container">
-      <div id = "imgbox"><img src="https://fred.stlouisfed.org/images/fred-logo-2x.png" class='center'></div>
-      
-      <div id = "main">
-        <div class="grid-container">
-          <div class = 'item-s'><input id="search" type="text" onkeydown='if (event.keyCode == 13) document.getElementById("enter").click()' placeholder = "Search FRED data..."></div>
-          <div class = 'item-e'><button id='enter' class="action" onclick="passSearch()">Enter</button></div>
-          <div class = 'item-n'><button id ='next' onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Next Page</button></div>
-        </div>
+    <div id = "imgbox"><img src="https://fred.stlouisfed.org/images/fred-logo-2x.png" class='center'></div>
+    
+    <div id = "main">
+      <div class="grid-container">
+        <div class = 'item-s'><input id="search" type="text" onkeydown='if (event.keyCode == 13) passSearch();' placeholder = "Search FRED data..."></div>
+        <div class = 'item-e'><button id='enter' class="action" onclick="passSearch()">Enter</button></div>
+        <div class = 'item-n'><button id ='help' onclick="google.script.run.withSuccessHandler(changePage).newPage('index2')">Help</button></div>
       </div>
     </div>
   </body>

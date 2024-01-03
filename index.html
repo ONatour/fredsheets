@@ -1,47 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-  </head>  
-  <script> 
+<script>
 
-   //reads value from text_box and passes it to search function
-    function passSearch() {
-      const search = document.getElementById("search").value;
-      google.script.run.repeatSearch(search);
-    }
-   
+  //reads value from text_box and passes it to search function
+  function passSearch(){
+    const search = document.getElementById("search").value;
+    google.script.run.repeatSearch(search);
+    google.script.run.withSuccessHandler(changePage).newPage('search_results.html')
+  }
+
+  //changes to another page.
   function changePage(page) {
     document.open();
     document.write(page);
     document.close();
   }
 
-  </script>
+ 
+</script>
 
-  <style>
+<html>
+  <head>
+    <base target="_top">
+    <!-- <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css"> -->
 
-    body{
-      height:100vh;
-      width:100vw;
-      margin:0;
-      padding:0;
-      overflow:hidden;
+    <style>
+      body{
+        height:100vh;
+        width:100vw;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+        
+      }
+      #imgbox{
+        img{
+          margin:35px 50px 15px 50px;
+          width:200px; 
+          height:64px;
+        }
+      }
 
-    }
-
-    #main{
+  
+      #main{
         margin: 5px;
       }
 
-    .grid-container{
+      .grid-container{
         display:grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        grid-gap: 0px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 10px;
         justify-items: center;
-        /* background-color: aquamarine; */
-        height:100px;
         
         button{
           display:block;
@@ -52,10 +61,9 @@
       }
 
       .item-s{
-        grid-area: 1 / 1 / 1 / 2;
+        grid-area: 1 / 1 / 1 / 3;
         align-self:center;
         width:95%;
-        
       }
       
       #search{
@@ -63,129 +71,33 @@
         box-sizing: border-box;
         width:100%;
         padding: 5px 3px 5px 3px;
-        margin: 0 0 10px 0;
         
       }
 
-      #two{
-        grid-area: 3 / 1 / 4 / 2;
-
+      .item-e{
+        grid-area: 2 / 1 / 2 / 1;
+        place-self:center stretch;
       }
 
-      .search-res{
-        grid-area: 2 / 1 / 3 / 2;
+      .item-n{
+        grid-area: 2 / 2 / 2 / 2;
         align-self: center;
-        width:100%;
-        height:110px;
-        
-        outline: 2px solid rgb(33, 8, 175);
-        outline-offset: -2px;
-
-        display:grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 20px 15px 15px 57px;
-        grid-gap: 1px;
-        
-        
-      
-        h4{
-          grid-area: 1 / 1 / 2 / 2;
-          font-size: 16px;
-          background-color: blueviolet;
-          margin: 0 0 0 2px;
-          padding: 2px 0 0 0;
-         
-          
-        }
-
-        h5{
-          grid-area: 1 / 2 / 2 / 3;
-          font-size: 14px;
-          background-color: rgb(40, 120, 14);
-          margin: 0 0 0 2px;
-          padding: 2px 0 0 0;
-          
-
-        }
-
-        p{
-          font-size: 13px;
-          margin: 0 0 0 2px;
-          
-        }
-
-        #units{
-          grid-area: 2 / 1 / 3 / 2;
-          background-color: darkgoldenrod;
-        }
-
-        #range{
-          grid-area: 2 / 2 / 3 / 3;
-          background-color: darkslategray;
-        }
-
-        #seasonal_adj{
-          grid-area: 3 / 1 / 4 / 2;
-          background-color: coral;
-        }
-
-        #freq{
-          grid-area: 3 / 2 / 4 / 3;
-          background-color: hotpink;
-          
-
-        }
-
-        #notes{
-          grid-area: 4 / 1 / 5 / 3;
-          background-color: crimson;
-
-        }
-        
-        
+        place-self: center stretch;
+        width: 100%;
       }
 
-  </style>
+    </style>
 
+  </head>
   <body>
+    <div id = "imgbox"><img src="https://fred.stlouisfed.org/images/fred-logo-2x.png" class='center'></div>
+    
     <div id = "main">
       <div class="grid-container">
-        <div class='item-s'><input id="search" type="text"
-          onkeydown='if (event.keyCode == 13)passSearch();'
-          placeholder="Search FRED data...">
-        </div>
-
-        <div class="search-res">
-          <h4> Title</h4>
-          <h5> Series ID </h5>
-          <p id ='units'> Percent</p>
-          <p id ='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id ='seasonal_adj'> LL</p>
-          <p id = 'freq'> Quarterly </p>
-          <p id = 'notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s.</p>
-
-        </div>
-
-        <div id = 'two' class="search-res">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        
-        
+        <div class = 'item-s'><input id="search" type="text" onkeydown='if (event.keyCode == 13) passSearch();' placeholder = "Search FRED data..."></div>
+        <div class = 'item-e'><button id='enter' class="action" onclick="passSearch()">Enter</button></div>
+        <div class = 'item-n'><button id ='help' onclick="google.script.run.withSuccessHandler(changePage).newPage('search_results.html')">Help</button></div>
       </div>
-      <!-- <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index');">First Page</button>
-    </div> -->
-    
-    
+    </div>
   </body>
 </html>

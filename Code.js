@@ -29,6 +29,8 @@ function repeatSearch(s){
   searchFred(s);
 }
 
+
+
 // prints back into the sheet what the strucutred seach query 
 function searchFred(query){
   let url ="https://api.stlouisfed.org/fred/series/search?search_text=" + query + "&api_key=" + api_key + "&file_type=json";
@@ -41,6 +43,11 @@ function searchFred(query){
 
   //sheet.appendRow([result])
 
+
+}
+
+function fredSearch(query){
+  
 
 }
 

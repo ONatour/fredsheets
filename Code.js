@@ -26,7 +26,7 @@ function newPage(page) {
 //prints back into the sheet what the search feild has
 function repeatSearch(s){
   sheet.appendRow([s])
-  searchFred(s);
+  fredSearch(s);
 }
 
 
@@ -47,6 +47,14 @@ function searchFred(query){
 }
 
 function fredSearch(query){
+  const response = UrlFetchApp.fetch(("https://api.stlouisfed.org/fred/series/search?search_text=" + query + "&api_key=" + api_key + "&file_type=json" + "&limit=10"), { 'muteHttpExceptions': true });
+  const json = response.getContentText();
+
+  
+
+  sheet.appendRow([response]);
+
+  
   
 
 }

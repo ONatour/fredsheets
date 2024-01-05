@@ -31,12 +31,13 @@
       width:100vw;
       margin:0;
       padding:0;
+      font-family: Arial;
       
 
     }
 
     html:hover{
-      overflow-y:scroll;
+      overflow-y:auto;
     }
 
     /*Scrollbar*/
@@ -61,7 +62,7 @@
     }
 
     #main{
-        margin: 5px;
+        margin: 5px 5px 0 5px;
       }
 
     .grid-container{
@@ -114,20 +115,20 @@
         
         
       
-        h4{
+        h1{
           grid-area: 1 / 1 / 2 / 2;
-          font-size: 16px;
-          background-color: blueviolet;
+          font-size: 15px;
+          /* background-color: blueviolet; */
           margin: 0 0 0 2px;
           padding: 2px 0 0 0;
          
           
         }
 
-        h5{
+        h2{
           grid-area: 1 / 2 / 2 / 3;
-          font-size: 14px;
-          background-color: rgb(40, 120, 14);
+          font-size: 13px;
+          /* background-color: rgb(40, 120, 14); */
           margin: 0 0 0 2px;
           padding: 2px 0 0 0;
           
@@ -135,7 +136,7 @@
         }
 
         p{
-          font-size: 13px;
+          font-size: 12px;
           margin: 0 0 0 2px;
           padding:0 2px 0 0
           
@@ -143,29 +144,29 @@
 
         #units{
           grid-area: 2 / 1 / 3 / 2;
-          background-color: darkgoldenrod;
+          /* background-color: darkgoldenrod; */
         }
 
         #range{
           grid-area: 2 / 2 / 3 / 3;
-          background-color: darkslategray;
+          /* background-color: darkslategray; */
         }
 
         #seasonal_adj{
           grid-area: 3 / 1 / 4 / 2;
-          background-color: coral;
+          /* background-color: coral; */
         }
 
         #freq{
           grid-area: 3 / 2 / 4 / 3;
-          background-color: hotpink;
+          /* background-color: hotpink; */
           
 
         }
 
         #notes{
           grid-area: 4 / 1 / 5 / 3;
-          background-color: crimson;
+          /* background-color: crimson; */
 
         }
         
@@ -183,8 +184,8 @@
         </div>
 
         <div class="search-res" style = 'grid-area: 2 / 1 / 3 / 2;'>
-          <h4> Title</h4>
-          <h5> Series ID </h5>
+          <h1> Title</h1>
+          <h2> Series ID </h2>
           <p id ='units'> Percent</p>
           <p id ='range'> 1/1/1970 - 12/31/2022 </p>
           <p id ='seasonal_adj'> LL</p>
@@ -195,8 +196,8 @@
         </div>
 
         <div class="search-res" style = "grid-area: 3 / 1 / 4 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
+          <h1> Series ID</h1>
+          <h2> Title </h2>
           <p id='units'> Percent</p>
           <p id='range'> 1/1/1970 - 12/31/2022 </p>
           <p id='seasonal_adj'> LL</p>
@@ -207,98 +208,6 @@
         
         </div>
 
-        <div class="search-res" style="grid-area: 4 / 1 / 5 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        <div class="search-res" style="grid-area: 5 / 1 / 6 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        <div class="search-res" style="grid-area: 6 / 1 / 7 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        <div class="search-res" style="grid-area: 7 / 1 / 8 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        <div class="search-res" style="grid-area: 8 / 1 / 9 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        <div class="search-res" style="grid-area: 9 / 1 / 10 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        <div class="search-res" style="grid-area: 10 / 1 / 11 / 2;">
-          <h4> Series ID</h4>
-          <h5> Title </h5>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
-
-        
         
       </div>
       <!-- <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index');">First Page</button>

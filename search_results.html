@@ -3,27 +3,6 @@
   <head>
     <base target="_top">
   </head>  
-  <script> 
-
-   //reads value from text_box and passes it to search function
-    function passSearch() {
-      const search = document.getElementById("search").value;
-      google.script.run.repeatSearch(search);
-      
-      // google.script.run.withSuccessHandler(changePage).newPage('search_results.html')
-    }
-   
-  function changePage(page) {
-    document.open();
-    document.write(page);
-    document.close();
-  }
-
-
-
-
-  </script>
-
   <style>
 
     html{
@@ -36,8 +15,6 @@
       margin:0;
       padding:0;
       font-family: Arial;
-      
-
     }
 
     html:hover{
@@ -57,7 +34,6 @@
       
     }
 
-    
     /* Handle */
     html::-webkit-scrollbar-thumb {
       background: #888;
@@ -102,7 +78,6 @@
         
       }
 
-    
       .search-res{
         
         align-self: center;
@@ -117,16 +92,12 @@
         grid-template-rows: 20px 15px 15px 57px;
         grid-gap: 1px;
         
-        
-      
         h1{
           grid-area: 1 / 1 / 2 / 5;
           font-size: 15px;
           background-color: blueviolet;
           margin: 0 0 0 2px;
           padding: 2px 0 0 0;
-         
-          
         }
 
         h2{
@@ -135,15 +106,12 @@
           background-color: rgb(40, 120, 14);
           margin: 0 0 0 2px;
           padding: 2px 0 0 0;
-          
-
         }
 
         p{
           font-size: 12px;
           margin: 0 0 0 2px;
           padding:0 2px 0 0
-          
         }
 
         #units{
@@ -164,8 +132,7 @@
         #freq{
           grid-area: 3 / 4 / 4 / 7;
           background-color: hotpink;
-          
-
+  
         }
 
         #notes{
@@ -174,34 +141,19 @@
 
         }
         
-        
       }
 
   </style>
 
   <body>
     <div id = "main">
-      <div class="grid-container">
+      <div id = 'grid-c' class="grid-container">
         <div class='item-s'><input id="search" type="text"
           onkeydown='if (event.keyCode == 13)passSearch();'
           placeholder="Search FRED data...">
         </div>
 
         <div> SEARCH QUERY </div>
-
-        <div id ='search-result-0' class="search-res" style = 'grid-area: 3 / 1 / 4 / 2;'>
-          <h1> Title</h1>
-          <h2> Series ID </h2>
-          <p id ='units'> Units</p>
-          <p id ='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id ='seasonal_adj'> Seasonally Adjusted ☐ </p>
-          <p id = 'freq'> Frequency </p>
-          <p id = 'notes'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s. the quick brown fox jumps over the lazy dog. Lor...</p>
-
-        </div>
-
-       
 
         
       </div>
@@ -210,34 +162,65 @@
 
     <script>
       
+      function createMyElement(type, id, text){
+        const ele = document.createElement(type);
 
-        function listMultipleResults(amount){
-          const searchDiv = document.getElementById("search-result-0");
+        if(id){
+          ele.id = id;
+        }
+        ele.appendChild(document.createTextNode(text))
 
-          for(let i = 0; i < amount; i++){
-            let clone = searchDiv.cloneNode(true);
+        return ele;
+      }
 
-            clone.id = "search-result-" + (i+1);
-            clone.style = ("grid-area:" + (i+3) + " / 1 " + (i + 4) + " / 2;" )
+      let pos = 0;
+      //working on making a function that will be able to develop the html code without a clone
+      function listMultipleResultsjs(){
 
-            searchDiv.parentNode.appendChild(clone);
+        const newDiv = document.createElement("div");
+        newDiv.style = ("grid-area:" + (pos + 3) + " / 1 / " + (pos + 4) + " / 2;");
+        pos++;
+        newDiv.classList = ("search-res");
 
-          }
+        const title = createMyElement("h1", "", "Title")
+        const series = createMyElement("h2", "","Series ID");
+        const units = createMyElement("p", "units", "Units");
+        const range = createMyElement("p", "range", "1/1/1970 - 12/31/2023");
+        const seasonal = createMyElement("p", "seasonal_adj", "Seasonally Adjusted ☐");
+        const frequency = createMyElement("p", "freq", "Frequency");
+        const notes = createMyElement("p", "notes", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum, velit iaculis volutpat porttitor, dui eros tristique ligula, ornare pulvinar ipsum sapien ac lacus.");
+
+        newDiv.appendChild(title);
+        newDiv.appendChild(series);
+        newDiv.appendChild(units);
+        newDiv.appendChild(range);
+        newDiv.appendChild(seasonal);
+        newDiv.appendChild(frequency);
+        newDiv.appendChild(notes);
+       
+        const gridc = document.getElementById('grid-c');
+
+        gridc.appendChild(newDiv);
+
       }
 
       //reads value from text_box and passes it to search function
         function passSearch() {
           const search = document.getElementById("search").value;
           google.script.run.repeatSearch(search);
+          listMultipleResultsjs();
           listMultipleResults(search);
-
+          
           // google.script.run.withSuccessHandler(changePage).newPage('search_results.html')
+        }
+
+        function changePage(page) {
+          document.open();
+          document.write(page);
+          document.close();
         }
       
       
     </script>
-    
-    
-    
   </body>
 </html>

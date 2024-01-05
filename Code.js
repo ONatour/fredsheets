@@ -47,12 +47,12 @@ function searchFred(query){
 }
 
 function fredSearch(query){
-  const response = UrlFetchApp.fetch(("https://api.stlouisfed.org/fred/series/search?search_text=" + query + "&api_key=" + api_key + "&file_type=json" + "&limit=10"), { 'muteHttpExceptions': true });
-  const json = response.getContentText();
+  //const response = UrlFetchApp.fetch(("https://api.stlouisfed.org/fred/series/search?search_text=" + query + "&api_key=" + api_key + "&file_type=json" + "&limit=10"), { 'muteHttpExceptions': true });
+  //const json = response.getContentText();
 
   
 
-  sheet.appendRow([response]);
+  //sheet.appendRow([response]);
 
   
   

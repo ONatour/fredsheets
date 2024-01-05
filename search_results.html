@@ -9,7 +9,8 @@
     function passSearch() {
       const search = document.getElementById("search").value;
       google.script.run.repeatSearch(search);
-      google.script.run.withSuccessHandler(changePage).newPage('search_results.html')
+      
+      // google.script.run.withSuccessHandler(changePage).newPage('search_results.html')
     }
    
   function changePage(page) {
@@ -17,6 +18,9 @@
     document.write(page);
     document.close();
   }
+
+
+
 
   </script>
 
@@ -109,16 +113,16 @@
         outline-offset: -2px;
 
         display:grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 20px 15px 15px 57px;
         grid-gap: 1px;
         
         
       
         h1{
-          grid-area: 1 / 1 / 2 / 2;
+          grid-area: 1 / 1 / 2 / 5;
           font-size: 15px;
-          /* background-color: blueviolet; */
+          background-color: blueviolet;
           margin: 0 0 0 2px;
           padding: 2px 0 0 0;
          
@@ -126,9 +130,9 @@
         }
 
         h2{
-          grid-area: 1 / 2 / 2 / 3;
+          grid-area: 1 / 5 / 2 / 7;
           font-size: 13px;
-          /* background-color: rgb(40, 120, 14); */
+          background-color: rgb(40, 120, 14);
           margin: 0 0 0 2px;
           padding: 2px 0 0 0;
           
@@ -143,30 +147,30 @@
         }
 
         #units{
-          grid-area: 2 / 1 / 3 / 2;
-          /* background-color: darkgoldenrod; */
+          grid-area: 2 / 1 / 3 / 4;
+          background-color: darkgoldenrod;
         }
 
         #range{
-          grid-area: 2 / 2 / 3 / 3;
-          /* background-color: darkslategray; */
+          grid-area: 2 / 4 / 3 / 7;
+          background-color: powderblue;
         }
 
         #seasonal_adj{
-          grid-area: 3 / 1 / 4 / 2;
-          /* background-color: coral; */
+          grid-area: 3 / 1 / 4 / 4;
+          background-color: coral;
         }
 
         #freq{
-          grid-area: 3 / 2 / 4 / 3;
-          /* background-color: hotpink; */
+          grid-area: 3 / 4 / 4 / 7;
+          background-color: hotpink;
           
 
         }
 
         #notes{
-          grid-area: 4 / 1 / 5 / 3;
-          /* background-color: crimson; */
+          grid-area: 4 / 1 / 5 / 7;
+          background-color: palegreen
 
         }
         
@@ -183,35 +187,56 @@
           placeholder="Search FRED data...">
         </div>
 
-        <div class="search-res" style = 'grid-area: 2 / 1 / 3 / 2;'>
+        <div> SEARCH QUERY </div>
+
+        <div id ='search-result-0' class="search-res" style = 'grid-area: 3 / 1 / 4 / 2;'>
           <h1> Title</h1>
           <h2> Series ID </h2>
-          <p id ='units'> Percent</p>
+          <p id ='units'> Units</p>
           <p id ='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id ='seasonal_adj'> LL</p>
-          <p id = 'freq'> Quarterly </p>
-          <p id = 'notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s.</p>
+          <p id ='seasonal_adj'> Seasonally Adjusted ☐ </p>
+          <p id = 'freq'> Frequency </p>
+          <p id = 'notes'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s. the quick brown fox jumps over the lazy dog. Lor...</p>
 
         </div>
 
-        <div class="search-res" style = "grid-area: 3 / 1 / 4 / 2;">
-          <h1> Series ID</h1>
-          <h2> Title </h2>
-          <p id='units'> Percent</p>
-          <p id='range'> 1/1/1970 - 12/31/2022 </p>
-          <p id='seasonal_adj'> LL</p>
-          <p id='freq'> Quarterly </p>
-          <p id='notes'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard
-            dummy text ever since the 1500s.</p>
-        
-        </div>
+       
 
         
       </div>
       <!-- <button onclick="google.script.run.withSuccessHandler(changePage).newPage('index');">First Page</button>
     </div> -->
+
+    <script>
+      
+
+        function listMultipleResults(amount){
+          const searchDiv = document.getElementById("search-result-0");
+
+          for(let i = 0; i < amount; i++){
+            let clone = searchDiv.cloneNode(true);
+
+            clone.id = "search-result-" + (i+1);
+            clone.style = ("grid-area:" + (i+3) + " / 1 " + (i + 4) + " / 2;" )
+
+            searchDiv.parentNode.appendChild(clone);
+
+          }
+      }
+
+      //reads value from text_box and passes it to search function
+        function passSearch() {
+          const search = document.getElementById("search").value;
+          google.script.run.repeatSearch(search);
+          listMultipleResults(search);
+
+          // google.script.run.withSuccessHandler(changePage).newPage('search_results.html')
+        }
+      
+      
+    </script>
+    
     
     
   </body>
